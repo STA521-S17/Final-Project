@@ -17,8 +17,10 @@ It's generally a bad idea to buy the most expensive house in the neighborhood. A
 
 You will have three data sets: a subset for training, a subset for testing, and a third subset for validation. You will be asked to do data exploration and build your model (or models) initially using only the training data. Then, you will test your model on the testing data, and finally validate using the validation data. We are challenging you to keep your analysis experience realistic, and in a realistic scenario you would not have access to all three of these data sets at once.  You will be able to see on our scoreboard how well your team is doing based on its predictive performance on the testing data.  After your project is turned in you will see the final score on the validation set.
 
+All members of the team should contribute equally and answer any questions about the analysis at the final presentation.
+
 For your analysis create a new notebook named "project.Rmd"
-and update accordingly.
+and update accordingly rather than editing this.
 
 
 ### Read in Training Data
@@ -51,23 +53,31 @@ load("Data/ames_test.Rdata")
 
 ```{r predict-model1, echo=FALSE}
 Yhat = predict(model1, newdata=ames_test, interval = "pred")
-save(Yhat, file="predict")
+```
+
+You should save your predictions in a dataframe with columns for `PID`  (property identifier), `fit`, predicted values on the test data, and where possible `lwr` and `upr`, lower and upper 95% interval estimates for predicting `price`. 
+
+```{r create }
+predictions = as.data.frame(Yhat)
+predictions$PID = ames_test$PID
+save(predictions, file="predict.Rdata")
 ```
 
 Your models will be evaluated on the following criteria on the test data: 
 
-* Bias – Average (Yhat-Y)  positive values indicate the model tends to overestimate price (on average) while negative values indicate the model tends to underestimate price.
+* Bias:  Average (Yhat-Y)  positive values indicate the model tends to overestimate price (on average) while negative values indicate the model tends to underestimate price.
 
-* Maximum Deviation - Max |Y-Yhat| -  identifies the worst prediction they made in the validation data set.
+* Maximum Deviation:  Max |Y-Yhat| -  identifies the worst prediction  made in the validation data set.
 
-* Mean Absolute Deviation – Average |Y-Yhat| - the average error (regardless of sign).
+* Mean Absolute Deviation:  Average |Y-Yhat| - the average error (regardless of sign).
 
-* Mean Square Error – Average (Y-Yhat)^2
+* Mean Square Error:  Average (Y-Yhat)^2
 
-* Coverage  Average( lwr < Y < upr) 
+* Coverage:  Average( lwr < Y < upr) 
+
 In order to have a passing wercker badge, your file for predictions needs to be the same length as the test data, with three columns:  fitted values, lower CI and upper CI values in that order.   
 
-You will be able to see your scores on the score board (coing soon!).
+You will be able to see your scores on the score board (coming soon!).
 
 _Model Check_ - Test your prediction on the first observation in the training and test data set to make sure that the model gives a reasonable answer and include this in a supplement of your report. This should be done BY HAND using a calculator (this means use the raw data from the original dataset and manually calculate all transformations and interactions with your calculator)! Models that do not give reasonable answers will be given a minimum 2 letter grade reduction. Also be careful as you cannot use certain transformations [log or inverse x] if a variable has values of 0.
 
@@ -80,16 +90,16 @@ Update your predictions using your complex model to provide point estimates and 
 ```{r predict-model2, echo=FALSE}
 # replace model1 with model2
 Yhat = predict(model1, newdata=ames_test, interval = "pred")
-save(Yhat, file="predict")
+save(Yhat, file="predict.Rdata")
 ```
 
-You may iterate here as much as you like exploring different models until you are satisfied with your restults.
+You may iterate here as much as you like exploring different models until you are satisfied with your results.
 
 ### Part III: Write Up
 
 Once you are satisfied with your model, provide a write up of your data analysis project in a new Rmd file/pdf file: `writeup.Rmd` by copying over salient parts of your R notebook. The written assignment consists of five parts:
 
-1. Exploratory data analysis (20 points): must include three correctly labeled graphs and an explanation that highlight the most important features that went into your model builiding.
+1. Exploratory data analysis (20 points): must include three correctly labeled graphs and an explanation that highlight the most important features that went into your model building.
 
 2. Development and assessment of an initial model from Part I (10 points)
 
@@ -130,24 +140,24 @@ Once you are satisfied with your model, provide a write up of your data analysis
 
 
 ### Part IV
-Create predictions for the validation data from your final model and write out to a file "predictions-validation"
+Create predictions for the validation data from your final model and write out to a file `prediction-validation.Rdata`
 This should have the same format as the models in Part I and II.
 
 ### Class Presentations
 
-Each Group should prepare 5 slides in their Githup repo:  (save as slides.pdf)
+Each Group should prepare 5 slides in their Github repo:  (save as slides.pdf)
 
 * Most interesting graphic  (a picture is worth a thousand words prize!)  
 
 * Best Model (motivation, how you found it, why you think it is best)
 
-* Best Insights
+* Best Insights into predicting Sales Price.
 
 * 2 Best Houses to purchase  (and why)
 
 * Best Team Name/Graphic
 
-We will select winners based on the above criteria
+We will select winners based on the above criteria and overall performance.
 
 
-Finally your repo should have: writeup.Rmd, writeup.pdf, slides.Rmd (and whatever output you use for the presentation)
+Finally your repo should have: `writeup.Rmd`, `writeup.pdf`, `slides.Rmd` (and whatever output you use for the presentation) and `predict.Rdata` and `predict-validation.Rdata`.
