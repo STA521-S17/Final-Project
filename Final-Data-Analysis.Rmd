@@ -135,7 +135,7 @@ This should have the same format as the models in Part I and II.
 
 ### Class Presentations
 
-Each Group should prepare 4 slides in their Githup repo:  (save as slides.pdf)
+Each Group should prepare 5 slides in their Githup repo:  (save as slides.pdf)
 
 * Most interesting graphic  (a picture is worth a thousand words prize!)  
 
@@ -144,6 +144,8 @@ Each Group should prepare 4 slides in their Githup repo:  (save as slides.pdf)
 * Best Insights
 
 * 2 Best Houses to purchase  (and why)
+
+* Best Team Name/Graphic
 
 We will select winners based on the above criteria
 
