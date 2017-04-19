@@ -92,7 +92,7 @@ Update your predictions using your complex model to provide point estimates and 
 # replace model1 with model2
 predictions = as.data.frame(predict(model1, newdata=ames_test, interval = "pred"))
 predictions$PID = ames_test$PID
-save(Yhat, file="predict.Rdata")
+save(predictions, file="predict.Rdata")
 ```
 
 You may iterate here as much as you like exploring different models until you are satisfied with your results.
