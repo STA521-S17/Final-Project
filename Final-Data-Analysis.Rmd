@@ -71,13 +71,13 @@ Your models will be evaluated on the following criteria on the test data:
 
 * Mean Absolute Deviation:  Average |Y-Yhat| - the average error (regardless of sign).
 
-* Mean Square Error:  Average (Y-Yhat)^2
+* Root Mean Square Error: Sqrt Average (Y-Yhat)^2
 
 * Coverage:  Average( lwr < Y < upr) 
 
-In order to have a passing wercker badge, your file for predictions needs to be the same length as the test data, with three columns:  fitted values, lower CI and upper CI values in that order.   
+In order to have a passing wercker badge, your file for predictions needs to be the same length as the test data, with three columns:  fitted values, lower CI and upper CI values in that order with names, fit, lwr, and upr respectively.  
 
-You will be able to see your scores on the score board (coming soon!).
+You will be able to see your scores on the score board (coming soon!).  They will be initialized by a predction based on the mean in the training data.
 
 _Model Check_ - Test your prediction on the first observation in the training and test data set to make sure that the model gives a reasonable answer and include this in a supplement of your report. This should be done BY HAND using a calculator (this means use the raw data from the original dataset and manually calculate all transformations and interactions with your calculator)! Models that do not give reasonable answers will be given a minimum 2 letter grade reduction. Also be careful as you cannot use certain transformations [log or inverse x] if a variable has values of 0.
 
